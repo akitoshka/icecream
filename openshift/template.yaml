@@ -11,25 +11,12 @@ objects:
     name: icecream
   spec:
     ports:
-    - name: icecream
+    - name: web
       port: 8080
       protocol: TCP
     selector:
       component: icecream
       name: icecream
-- kind: ServiceAccount
-  apiVersion: v1
-  metadata:
-    name: icecream
-- kind: RoleBinding
-  apiVersion: v1
-  metadata:
-    name: icecream-view
-  roleRef:
-    name: view
-  subjects:
-  - kind: ServiceAccount
-    name: icecream
 - kind: DeploymentConfig
   apiVersion: v1
   metadata:
@@ -46,8 +33,6 @@ objects:
           component: icecream
           name: icecream
       spec:
-        serviceAccount: icecream
-        serviceAccountName: icecream
         containers:
         - name: icecream
           image: akitoshka/icecream:latest
