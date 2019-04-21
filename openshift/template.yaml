@@ -64,7 +64,7 @@ objects:
             failureThreshold: 5
           readinessProbe:
             httpGet:
-              path: /
+              path: /actuator/health
               port: 8080
               scheme: HTTP
             initialDelaySeconds: 60
